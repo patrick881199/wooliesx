@@ -81,14 +81,26 @@ nav {
   margin: auto;
   display: flex;
   align-items: center;
-  min-height: 10vh;
-  padding: 2rem 0rem;
+  height: 10vh;
+  /* padding: 2rem 0rem; */
 }
 
 .nav-links {
   display: flex;
   justify-content: space-around;
   flex: 4 1 20rem;
+  align-items: center;
+  height: 100%;
+}
+
+.nav-links li {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.underline {
+  border-bottom: 5px solid #4483d5;
 }
 
 .nav-links li:hover {
@@ -110,7 +122,7 @@ main {
   align-items: center;
 }
 
-.filter p {
+.filterItem {
   padding: 1rem 3rem;
   background-color: #ededed;
   border-radius: 5rem;
@@ -121,6 +133,11 @@ main {
   background-color: #4483d5;
   color: white;
   cursor: pointer;
+}
+
+.highlight {
+  background-color: #4483d5;
+  color: white;
 }
 
 .recipes {
@@ -141,14 +158,47 @@ main {
   object-fit: cover;
 }
 
-.recipe:hover {
+.add:hover {
   cursor: pointer;
 }
 
 .recipe img {
   margin-right: 3rem;
 }
+.add {
+  text-align: right;
+  color: #4483d5;
+}
+.mycollection {
+  position: fixed;
+  right: 0rem;
+  bottom: 0rem;
+  padding: 1rem 4rem;
+  background-color: #4483d5;
+  transition: all 0.2s ease;
+  border-top-left-radius: 2rem;
+  border-top-right-radius: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  color: white;
+  cursor: pointer;
+}
 
-.recipe .info {
-  /* padding: 2rem; */
+.mycollection:hover {
+  background-color: #5198f5;
+  padding: 2rem 4rem;
+}
+
+.mycollection span {
+  height: 3rem;
+  border-radius: 25rem;
+  background-color: red;
+  width: 3rem;
+  display: flex;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  margin-left: 2rem;
 }
