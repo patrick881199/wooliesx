@@ -1,4 +1,4 @@
-let recipeData = {
+let data = {
   "7da7672c-8ec0-4cb2-8497-894644b58366": {
     id: "7da7672c-8ec0-4cb2-8497-894644b58366",
     image: "./imgs/image1.bmp",

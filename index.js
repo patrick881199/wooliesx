@@ -12,6 +12,13 @@ let filter = "All";
 
 let myRecipes;
 
+let recipeData;
+if (localStorage.getItem("recipeData") === null) {
+  recipeData = data;
+} else {
+  recipeData = JSON.parse(localStorage.getItem("recipeData"));
+}
+
 if (localStorage.getItem("myRecipes") === null) {
   myRecipes = {};
 } else {

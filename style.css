@@ -218,3 +218,31 @@ main {
   margin-right: 2rem;
   cursor: pointer;
 }
+
+.save {
+  margin-right: 2rem;
+  cursor: pointer;
+}
+
+.info {
+  width: 100%;
+}
+
+.info input {
+  display: block;
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid grey;
+}
+
+.info textarea {
+  display: block;
+  width: 100%;
+  height: 10rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid grey;
+  margin: 1rem auto;
+  resize: none;
+}
