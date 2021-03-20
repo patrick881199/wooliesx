@@ -8,15 +8,17 @@ const footer = document.querySelector("footer");
 document.addEventListener("DOMContentLoaded", loadPage);
 
 let category = "Entrees";
-let typeTwo = "All";
+let category2 = "All";
 
-const myRecipes = [];
+let myRecipes;
+
+if (localStorage.getItem("myRecipes") === null) {
+  myRecipes = {};
+} else {
+  myRecipes = JSON.parse(localStorage.getItem("myRecipes"));
+}
 
 //Functions
-
-function selectedTypeOne(e) {
-  e.target.classList.toggle("completed");
-}
 
 function loadPage() {
   getRecipes();
@@ -28,10 +30,14 @@ function loadPage() {
 function getRecipes() {
   recipesDiv.innerHTML = "";
 
-  recipeData.forEach(function (recipe) {
+  let values = Object.keys(recipeData).map(function (key) {
+    return recipeData[key];
+  });
+
+  values.forEach(function (recipe) {
     if (
       recipe.category === category &&
-      (typeTwo === "All" || typeTwo === recipe.type2)
+      (category2 === "All" || category2 === recipe.type2)
     ) {
       //Create recipe div
       const recipeDiv = document.createElement("div");
@@ -57,25 +63,22 @@ function getRecipes() {
       const add = document.createElement("p");
       add.classList.add("add");
       add.innerText = "Add to collection";
-      add.addEventListener("click", () => addHandler(recipe));
+
+      add.addEventListener("click", () => addHandler({ [recipe.id]: recipe }));
       info.appendChild(add);
 
       recipesDiv.appendChild(recipeDiv);
     }
   });
+
+  //localStorage.setItem("recipes", JSON.stringify(recipeData));
 }
 
 function addHandler(recipe) {
-  if (myRecipes.length === 0) {
-    myRecipes.push(recipe);
-  } else {
-    const item = myRecipes.filter(function (item) {
-      return item.id === recipe.id;
-    });
-    if (item.length === 0) {
-      myRecipes.push(recipe);
-    }
-  }
+  myRecipes = { ...myRecipes, ...recipe };
+
+  localStorage.setItem("myRecipes", JSON.stringify(myRecipes));
+
   getFooter();
 }
 
@@ -100,14 +103,20 @@ function getFooter() {
 
   collection.classList.toggle("mycollection");
 
-  // list.addEventListener("click", changeTypeOne);
-  collection.innerHTML = `My Collections  <span>${myRecipes.length}</span>`;
+  collection.addEventListener("click", goToMyCollection);
+  collection.innerHTML = `My Collections  <span>${
+    Object.keys(myRecipes).length
+  }</span>`;
   footer.appendChild(collection);
+}
+
+function goToMyCollection() {
+  window.location.href = "/mycollection.html";
 }
 
 function changeTypeOne(e) {
   category = e.target.innerText;
-  typeTwo = "All";
+  category2 = "All";
   getMenus();
   getRecipes();
 }
@@ -118,7 +127,7 @@ function getFilter() {
   typeTwos.forEach(function (type) {
     const p = document.createElement("p");
     p.classList.add("filterItem");
-    if (type === typeTwo) {
+    if (type === category2) {
       p.classList.toggle("highlight");
     }
     p.addEventListener("click", changeTypeTwo);
@@ -128,7 +137,7 @@ function getFilter() {
 }
 
 function changeTypeTwo(e) {
-  typeTwo = e.target.innerText;
+  category2 = e.target.innerText;
   getFilter();
   getRecipes();
 }
