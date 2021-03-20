@@ -202,3 +202,19 @@ main {
   justify-content: center;
   margin-left: 2rem;
 }
+
+.manage {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  color: #4483d5;
+  font-size: 2rem;
+}
+
+.delete {
+  cursor: pointer;
+}
+.edit {
+  margin-right: 2rem;
+  cursor: pointer;
+}

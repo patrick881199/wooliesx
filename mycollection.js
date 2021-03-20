@@ -12,7 +12,7 @@ function loadPage() {
   getFooter();
 }
 
-function getRecipes() {
+function getRecipes(item) {
   recipesDiv.innerHTML = "";
 
   if (localStorage.getItem("myRecipes") === null) {
@@ -47,19 +47,37 @@ function getRecipes() {
     description.innerHTML = recipe.description;
     info.appendChild(description);
 
-    const deleteButton = document.createElement("p");
-    deleteButton.classList.add("add");
+    const manage = document.createElement("div");
+    manage.classList.add("manage");
+
+    const deleteButton = document.createElement("div");
+    deleteButton.classList.add("delete");
     deleteButton.innerText = "Delete";
     deleteButton.addEventListener("click", () =>
       deleteHandler({ [recipe.id]: recipe })
     );
 
-    info.appendChild(deleteButton);
+    const editButton = document.createElement("div");
+    editButton.classList.add("edit");
+    editButton.innerText = "Edit";
+    editButton.addEventListener("click", () =>
+      editHandler({ [recipe.id]: recipe })
+    );
+
+    manage.appendChild(editButton);
+    manage.appendChild(deleteButton);
+    info.appendChild(manage);
 
     recipesDiv.appendChild(recipeDiv);
   });
 
   //localStorage.setItem("recipes", JSON.stringify(recipeData));
+}
+
+function editHandler(item) {
+  myRecipes;
+
+  loadPage();
 }
 function deleteHandler(item) {
   let key = Object.keys(item)[0];

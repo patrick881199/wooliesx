@@ -8,7 +8,7 @@ const footer = document.querySelector("footer");
 document.addEventListener("DOMContentLoaded", loadPage);
 
 let category = "Entrees";
-let category2 = "All";
+let filter = "All";
 
 let myRecipes;
 
@@ -37,7 +37,7 @@ function getRecipes() {
   values.forEach(function (recipe) {
     if (
       recipe.category === category &&
-      (category2 === "All" || category2 === recipe.type2)
+      (filter === "All" || filter === recipe.filter)
     ) {
       //Create recipe div
       const recipeDiv = document.createElement("div");
@@ -60,12 +60,19 @@ function getRecipes() {
       description.innerHTML = recipe.description;
       info.appendChild(description);
 
-      const add = document.createElement("p");
-      add.classList.add("add");
-      add.innerText = "Add to collection";
+      const manage = document.createElement("div");
+      manage.classList.add("manage");
+      const addButton = document.createElement("div");
+      addButton.classList.add("add");
+      addButton.innerText = "Add to collection";
 
-      add.addEventListener("click", () => addHandler({ [recipe.id]: recipe }));
-      info.appendChild(add);
+      addButton.addEventListener("click", () =>
+        addHandler({ [recipe.id]: recipe })
+      );
+
+      manage.appendChild(addButton);
+
+      info.appendChild(manage);
 
       recipesDiv.appendChild(recipeDiv);
     }
@@ -85,13 +92,13 @@ function addHandler(recipe) {
 function getMenus() {
   navLinks.innerHTML = "";
   let categorys = ["Entrees", "Mains", "Salads", "Sides", "Desserts", "Drinks"];
-  categorys.forEach(function (type) {
+  categorys.forEach(function (c) {
     const list = document.createElement("li");
-    if (type === category) {
+    if (c === category) {
       list.classList.toggle("underline");
     }
-    list.addEventListener("click", changeTypeOne);
-    list.innerText = type;
+    list.addEventListener("click", changeCategory);
+    list.innerText = c;
     navLinks.appendChild(list);
   });
 }
@@ -114,30 +121,30 @@ function goToMyCollection() {
   window.location.href = "/mycollection.html";
 }
 
-function changeTypeOne(e) {
+function changeCategory(e) {
   category = e.target.innerText;
-  category2 = "All";
+  filter = "All";
   getMenus();
   getRecipes();
 }
 
 function getFilter() {
   filterDiv.innerHTML = "";
-  let typeTwos = ["All", "Vegan", "Vegetarian", "Pescatarian"];
-  typeTwos.forEach(function (type) {
+  let filters = ["All", "Vegan", "Vegetarian", "Pescatarian"];
+  filters.forEach(function (f) {
     const p = document.createElement("p");
     p.classList.add("filterItem");
-    if (type === category2) {
+    if (f === filter) {
       p.classList.toggle("highlight");
     }
-    p.addEventListener("click", changeTypeTwo);
-    p.innerText = type;
+    p.addEventListener("click", changeFilter);
+    p.innerText = f;
     filterDiv.appendChild(p);
   });
 }
 
-function changeTypeTwo(e) {
-  category2 = e.target.innerText;
+function changeFilter(e) {
+  filter = e.target.innerText;
   getFilter();
   getRecipes();
 }
