@@ -1,0 +1,154 @@
+/* Global Styles */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+@font-face {
+  font-family: "Ruh1";
+  src: url("/fonts/FrankRuhlLibre-Regular.ttf");
+}
+@font-face {
+  font-family: "Ruh1 Mudium";
+  src: url("/fonts/FrankRuhlLibre-Medium.ttf");
+}
+@font-face {
+  font-family: "Vibes";
+  src: url("/fonts/GreatVibes-Regular.ttf");
+}
+html {
+  font-size: 62.5%;
+  --header1: calc(2rem + 1vw);
+  --header2: calc(3.5rem + 1vw);
+  --header3: calc(3rem + 1vw);
+  --header4: calc(2.4rem + 1vw);
+  --text: calc(1.5rem + 1vw);
+  --big: calc(6rem + 1vw);
+  --speical-color: #906272;
+  --background-color: #414141;
+  --gray-text: #525252;
+}
+
+h1 {
+  font-size: var(--header1);
+}
+
+li,
+button,
+label,
+input,
+a,
+p {
+  font-size: var(--text);
+}
+
+h2 {
+  font-size: var(--header2);
+}
+h3 {
+  font-size: var(--header3);
+  font-weight: normal;
+}
+h4,
+h5 {
+  font-size: var(--header4);
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+ul {
+  list-style: none;
+}
+
+body {
+  font-family: "Ruhl", sans-serif;
+  animation: openning 1s ease-in-out;
+}
+h1 {
+  font-family: "Vibes", sans-serif;
+}
+
+/* nav section  */
+.main-head {
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.1);
+  z-index: 100;
+  position: relative;
+}
+nav {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  align-items: center;
+  min-height: 10vh;
+  padding: 2rem 0rem;
+}
+
+.nav-links {
+  display: flex;
+  justify-content: space-around;
+  flex: 4 1 20rem;
+}
+
+.nav-links li:hover {
+  cursor: pointer;
+}
+
+#logo {
+  flex: 1 1 20rem;
+}
+
+main {
+  width: 70%;
+  margin: 2rem auto;
+}
+
+.filter {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.filter p {
+  padding: 1rem 3rem;
+  background-color: #ededed;
+  border-radius: 5rem;
+  transition: all 0.2s ease;
+}
+
+.filter p:hover {
+  background-color: #4483d5;
+  color: white;
+  cursor: pointer;
+}
+
+.recipes {
+  margin: 3rem 0rem;
+}
+
+.recipe {
+  height: 30vh;
+  display: flex;
+  overflow: hidden;
+  padding: 2rem;
+  border-bottom: 1px solid#adadad;
+}
+
+.recipe img {
+  border-radius: 2rem;
+
+  object-fit: cover;
+}
+
+.recipe:hover {
+  cursor: pointer;
+}
+
+.recipe img {
+  margin-right: 3rem;
+}
+
+.recipe .info {
+  /* padding: 2rem; */
+}
