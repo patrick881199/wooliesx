@@ -149,6 +149,11 @@ main {
   color: white;
 }
 
+h4 {
+  border-bottom: 1px solid grey;
+  padding-bottom: 1rem;
+}
+
 .recipe {
   /* height: 30vh; */
   display: flex;

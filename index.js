@@ -41,6 +41,11 @@ function getRecipes() {
     return recipeData[key];
   });
 
+  const title = document.createElement("h4");
+  title.innerText = category;
+
+  recipesDiv.appendChild(title);
+
   values.forEach(function (recipe) {
     if (
       recipe.category === category &&
