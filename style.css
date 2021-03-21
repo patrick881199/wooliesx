@@ -186,7 +186,7 @@ main {
   position: fixed;
   right: 0rem;
   bottom: 0rem;
-  padding: 1rem 4rem;
+  padding: 1rem 2rem;
   background-color: #4483d5;
   transition: all 0.2s ease;
   border-top-left-radius: 2rem;
