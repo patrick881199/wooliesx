@@ -29,7 +29,7 @@ if (localStorage.getItem("myRecipes") === null) {
 
 function loadPage() {
   getRecipes();
-  getMenus();
+  getCategory();
   getFilter();
   getFooter();
 }
@@ -86,7 +86,7 @@ function getRecipes() {
   });
 }
 
-function getMenus() {
+function getCategory() {
   navLinks.innerHTML = "";
   let categorys = ["Entrees", "Mains", "Salads", "Sides", "Desserts", "Drinks"];
   categorys.forEach(function (c) {
@@ -138,7 +138,8 @@ function changeFilter(e) {
 function changeCategory(e) {
   category = e.target.innerText;
   filter = "All";
-  getMenus();
+  getCategory();
+  getFilter();
   getRecipes();
 }
 
