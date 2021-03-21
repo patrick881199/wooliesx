@@ -72,7 +72,7 @@ function getRecipes() {
       manage.classList.add("manage");
       const addButton = document.createElement("div");
       addButton.classList.add("add");
-      addButton.innerText = "Add to collection";
+      addButton.innerText = "Add";
 
       addButton.addEventListener("click", () =>
         addHandler({ [recipe.id]: recipe })
