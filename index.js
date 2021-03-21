@@ -7,11 +7,10 @@ const footer = document.querySelector("footer");
 //Event Listeners
 document.addEventListener("DOMContentLoaded", loadPage);
 
+//Data
 let category = "Entrees";
 let filter = "All";
-
 let myRecipes;
-
 let recipeData;
 if (localStorage.getItem("recipeData") === null) {
   recipeData = data;
@@ -85,16 +84,6 @@ function getRecipes() {
       recipesDiv.appendChild(recipeDiv);
     }
   });
-
-  //localStorage.setItem("recipes", JSON.stringify(recipeData));
-}
-
-function addHandler(recipe) {
-  myRecipes = { ...myRecipes, ...recipe };
-
-  localStorage.setItem("myRecipes", JSON.stringify(myRecipes));
-
-  getFooter();
 }
 
 function getMenus() {
@@ -125,17 +114,6 @@ function getFooter() {
   footer.appendChild(collection);
 }
 
-function goToMyCollection() {
-  window.location.href = "/mycollection.html";
-}
-
-function changeCategory(e) {
-  category = e.target.innerText;
-  filter = "All";
-  getMenus();
-  getRecipes();
-}
-
 function getFilter() {
   filterDiv.innerHTML = "";
   let filters = ["All", "Vegan", "Vegetarian", "Pescatarian"];
@@ -155,4 +133,23 @@ function changeFilter(e) {
   filter = e.target.innerText;
   getFilter();
   getRecipes();
+}
+
+function changeCategory(e) {
+  category = e.target.innerText;
+  filter = "All";
+  getMenus();
+  getRecipes();
+}
+
+function addHandler(recipe) {
+  myRecipes = { ...myRecipes, ...recipe };
+
+  localStorage.setItem("myRecipes", JSON.stringify(myRecipes));
+
+  getFooter();
+}
+
+function goToMyCollection() {
+  window.location.href = "/mycollection.html";
 }

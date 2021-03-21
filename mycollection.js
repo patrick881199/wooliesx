@@ -1,12 +1,14 @@
 //Select DOM
 const recipesDiv = document.querySelector(".recipes");
 const footer = document.querySelector("footer");
-let myRecipes;
 
+//Data
+let myRecipes;
 let recipeData = JSON.parse(localStorage.getItem("recipeData"));
 
 //Event Listeners
 document.addEventListener("DOMContentLoaded", loadPage);
+
 //Functions
 
 function loadPage() {
@@ -14,6 +16,8 @@ function loadPage() {
 
   getFooter();
 }
+
+//This one is different from the one in index.js, it accepts one parameter
 function getRecipes(item) {
   recipesDiv.innerHTML = "";
 
@@ -62,6 +66,7 @@ function getRecipes(item) {
 
       manage.appendChild(editButton);
     } else {
+      //show the editting input
       const name = document.createElement("input");
       name.setAttribute("type", "text");
       name.classList.add("input-name");
@@ -97,7 +102,19 @@ function getRecipes(item) {
     recipesDiv.appendChild(recipeDiv);
   });
 }
+function getFooter() {
+  footer.innerHTML = "";
 
+  const collection = document.createElement("div");
+
+  collection.classList.toggle("mycollection");
+
+  collection.addEventListener("click", goToHomepage);
+  collection.innerHTML = `Go Back To HomePage <span>${
+    Object.keys(myRecipes).length
+  }</span>`;
+  footer.appendChild(collection);
+}
 function saveHandler(item) {
   const input = document.querySelector(".input-name");
   const name = input.value;
@@ -124,20 +141,6 @@ function deleteHandler(item) {
   delete myRecipes[key];
   localStorage.setItem("myRecipes", JSON.stringify(myRecipes));
   loadPage();
-}
-
-function getFooter() {
-  footer.innerHTML = "";
-
-  const collection = document.createElement("div");
-
-  collection.classList.toggle("mycollection");
-
-  collection.addEventListener("click", goToHomepage);
-  collection.innerHTML = `Go Back To HomePage <span>${
-    Object.keys(myRecipes).length
-  }</span>`;
-  footer.appendChild(collection);
 }
 
 function goToHomepage() {
