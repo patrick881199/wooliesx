@@ -15,6 +15,7 @@ let myRecipes;
 let recipeData;
 if (localStorage.getItem("recipeData") === null) {
   recipeData = data;
+  localStorage.setItem("recipeData", JSON.stringify(recipeData));
 } else {
   recipeData = JSON.parse(localStorage.getItem("recipeData"));
 }
