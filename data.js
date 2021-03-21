@@ -159,7 +159,7 @@ let data = {
 
   "12bc2c40-8996-4fb3-8d7f-485a7efe1d4f": {
     id: "12bc2c40-8996-4fb3-8d7f-485a7efe1d4f",
-    image: "./imgs/drinks33.bmp",
+    image: "./imgs/drinks3.bmp",
     category: "Drinks",
     filter: "Pescatarian",
     name: "Lorem ipsum dt amet.",
